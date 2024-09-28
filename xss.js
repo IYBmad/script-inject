@@ -12,4 +12,4 @@ document.body.appendChild(script);
     };
     document.body.appendChild(script);
 </script>
-
+<script>alert(document.domain.concat("\n").concat(window.origin))</script>

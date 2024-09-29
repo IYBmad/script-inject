@@ -1,3 +1,3 @@
 console.log('Script loaded'); // Log to check script loading
-alert('xss.js');  // Trigger alert
+alert('test');  // Trigger alert
 "'><img src=q onerror="alert('stored')">

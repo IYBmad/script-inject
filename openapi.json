@@ -3,7 +3,7 @@
   "info": {
     "title": "PoC Test",
     "version": "1.0.0",
-    "description": "<img src='x' onerror=\"console.log('poc: img onerror')\"> <svg><animate onbegin=\"console.log('poc: svg executed')\" attributeName=\"x\" from=\"0\" to=\"1\" dur=\"0.001s\"/></svg> <!-- inline script test --> <script>console.log('poc: inline script executed');</script>"
+    "description": "<img src='x' onerror=\"console.log('poc: img onerror')\"> <svg><animate onbegin=\"console.log('poc: svg executed')\" attributeName=\"x\" from=\"0\" to=\"1\" dur=\"0.001s\"/></svg> <script>console.log('poc: inline script executed');</script>"
   },
   "paths": {}
 }

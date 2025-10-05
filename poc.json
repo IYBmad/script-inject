@@ -2,8 +2,9 @@
   "swagger": "2.0",
   "info": {
     "version": "v1",
-    "title": "CatSafetyServices.WebApp",
+    "title": "CatSafetyServices.WebAppp",
     "description": "<img src=x onerror=\"alert('XSS-from-configUrl')\">"
   },
   "paths": {}
 }
+

